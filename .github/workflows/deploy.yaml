@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  AWS_REGION: ap-northeast-2
+  AWS_REGION: us-east-1
   ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
   ECS_CLUSTER_NAME: default
   ECS_SERVICE_NAME: cicd-test-2

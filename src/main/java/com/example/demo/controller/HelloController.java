@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class HelloController {
 
-    @GetMapping("/test")
+    @GetMapping("/api/hello")
     public String testApi() {
-        return "Test API is working";
+        return "수정 사항 자동배포 확인해볼까요";
     }
 }

@@ -8,7 +8,7 @@ env:
   AWS_REGION: ap-northeast-2
   ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
   ECS_CLUSTER_NAME: default
-  ECS_SERVICE_NAME: cicd-test-22
+  ECS_SERVICE_NAME: cicd-test-2
   ECS_TASK_DEFI: cicd-test-definition:4
 
 jobs:

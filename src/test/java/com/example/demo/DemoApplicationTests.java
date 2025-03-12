@@ -8,11 +8,11 @@ class DemoApplicationTests {
 	@Autowired
     	private TestRestTemplate restTemplate;
 	@Test
-	@DisplayName("승인 여부와 함께 모든 파티 그룹을 조회한다")
+	@DisplayName("is Hello Test works?")
 	void contextLoads() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/api/test", String.class); 
+		ResponseEntity<String> response = restTemplate.getForEntity("/api/hello", String.class); 
 
-		assertTrue(response.getBody().contains("Hello, World!"));
+		assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 }

@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/api/hello")
     public String testApi() {
-        return "수정 사항 자동배포 확인해볼까요";
+        return "Hello World!";
     }
 }

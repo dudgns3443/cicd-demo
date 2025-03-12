@@ -4,7 +4,7 @@ FROM openjdk:21-slim
 WORKDIR /app
 
 # copy .jar file to docker
-COPY ./build/libs/*.jar app.jar
+COPY ./build/libs/*.jar /app.jar
 
 # always do command
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "/app.jar"]

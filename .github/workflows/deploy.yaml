@@ -7,9 +7,9 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
-  ECS_CLUSTER_NAME: default
-  ECS_SERVICE_NAME: cicd-test-2
-  ECS_TASK_DEFI: cicd-test-definition:4
+  ECS_CLUSTER_NAME: devcourse-demo
+  ECS_SERVICE_NAME: devcourse-svc
+  ECS_TASK_DEFI: devcourse-task-def:1
 
 jobs:
   CI:
@@ -51,17 +51,17 @@ jobs:
         
       - name: Container Push
         run : docker push ${{ env.ECR_URL }}
-  # CD:
-  #   name: Deploy
-  #   runs-on: ubuntu-latest
-  #   needs: CI
-  #   steps:
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v2
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: ${{ env.AWS_REGION }}
+  CD:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: CI
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
           
       - name: Deploy to ECS
         run: aws ecs update-service --cluster ${{env.ECS_CLUSTER_NAME}} --service ${{env.ECS_SERVICE_NAME}} --task-definition ${{env.ECS_TASK_DEFI}} --force-new-deployment

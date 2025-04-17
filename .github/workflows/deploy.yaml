@@ -6,6 +6,7 @@ on:
       - main
 env:
    AWS_REGION: us-east-1
+   ECR_ROOT_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com
    ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
    ECS_CLUSTER_NAME: default
    ECS_SERVICE_NAME: cicd-test-2
@@ -44,8 +45,7 @@ jobs:
         run: ls -al && ls -al build && ls -al build/libs
 
       - name: ECR login
-        run: aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin 534420079206.dkr.ecr.ap-northeast-2.amazonaws.com
-      
+        run: aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{env.ECR_ROOT_URL}}
       - name: Container build
         run: docker build -t ${{ env.ECR_URL }} .
         

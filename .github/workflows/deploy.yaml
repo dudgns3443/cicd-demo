@@ -5,9 +5,12 @@ on:
     branches:
       - main
 env:
-  AWS_REGION: us-east-1
-  ECR_URL: 534420079206.dkr.ecr.ap-northeast-2.amazonaws.com/backend-app
-
+   AWS_REGION: us-east-1
+   ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
+   ECS_CLUSTER_NAME: default
+   ECS_SERVICE_NAME: cicd-test-2
+   ECS_TASK_DEFI: cicd-test-definition:4
+   
 jobs:
   CI:
     name: Build
@@ -41,7 +44,7 @@ jobs:
         run: ls -al && ls -al build && ls -al build/libs
 
       - name: ECR login
-        run: aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 534420079206.dkr.ecr.ap-northeast-2.amazonaws.com
+        run: aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin 534420079206.dkr.ecr.ap-northeast-2.amazonaws.com
       
       - name: Container build
         run: docker build -t ${{ env.ECR_URL }} .
@@ -60,7 +63,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
           
-      - name: Get Cluster
-        run: aws eks --region ap-northeast-2 update-kubeconfig --name company-eks-core-prod
-      - name: Deploy to EKS
-        run: kubectl rollout restart deployments/backend-app -n domain
+      - name: Deploy to ECS
+        run: aws ecs update-service --cluster ${{env.ECS_CLUSTER_NAME}} --service ${{env.ECS_SERVICE_NAME}} --task-definition ${{env.ECS_TASK_DEFI}} --force-new-deployment

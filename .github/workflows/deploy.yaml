@@ -10,7 +10,7 @@ env:
    ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
    ECS_CLUSTER_NAME: cicd-demo
    ECS_SERVICE_NAME: cicd-demo-svc
-   ECS_TASK_DEFI: cicd-demo-td:1
+   ECS_TASK_DEFI: cicd-demo-td:2
    
 jobs:
   CI:

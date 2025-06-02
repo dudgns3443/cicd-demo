@@ -9,7 +9,7 @@ public class HelloController {
     @GetMapping("/api/hello")
     public String testApi() {
 
-        return "서버 동작 테스트입니다~ 잘되었으면 좋겠네요 test";
+        return "Hello World!";
     }
     @GetMapping("/health")
     public boolean healthCheckApi() {

@@ -6,12 +6,13 @@ on:
       - main
 env:
    AWS_REGION: ap-northeast-2
-   ECR_ROOT_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com
-   ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
-   ECS_CLUSTER_NAME: cicd-demo
-   ECS_SERVICE_NAME: cicd-demo-svc
-   ECS_TASK_DEFI: cicd-demo-td:2
-   
+   ECR_ROOT_URL: 
+   ECR_URL: 
+   ECS_CLUSTER_NAME: 
+   ECS_SERVICE_NAME: 
+   ECS_TASK_DEFI: 
+   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
   CI:
     name: Build
@@ -24,8 +25,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
         
       - name: JDK 21 설치
@@ -59,8 +60,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
           
       - name: Deploy to ECS

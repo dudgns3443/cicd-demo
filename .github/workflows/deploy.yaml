@@ -6,7 +6,7 @@ on:
       - main
 env:
    AWS_REGION: ap-northeast-2
-   ECR_ROOT_URL: 
+   ECR_ROOT_URL: a
    ECR_URL: 
    ECS_CLUSTER_NAME: 
    ECS_SERVICE_NAME: 

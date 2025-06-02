@@ -5,12 +5,12 @@ on:
     branches:
       - main
 env:
-   AWS_REGION: us-east-1
-   ECR_ROOT_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com
-   ECR_URL: 534420079206.dkr.ecr.us-east-1.amazonaws.com/cicd-test:latest
+   AWS_REGION: ap-northeast-2
+   ECR_ROOT_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com
+   ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
    ECS_CLUSTER_NAME: cicd-demo
-   ECS_SERVICE_NAME: cicd-demo
-   ECS_TASK_DEFI: cicd-demo_td:2
+   ECS_SERVICE_NAME: cicd-demo-svc
+   ECS_TASK_DEFI: cicd-demo-td:2
    
 jobs:
   CI:

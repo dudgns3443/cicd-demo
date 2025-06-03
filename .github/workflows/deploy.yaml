@@ -6,11 +6,11 @@ on:
       - main
 env:
    AWS_REGION: ap-northeast-2
-   ECR_ROOT_URL: 
-   ECR_URL: 
-   ECS_CLUSTER_NAME: 
-   ECS_SERVICE_NAME: 
-   ECS_TASK_DEFI: 
+   ECR_ROOT_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com
+   ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
+   ECS_CLUSTER_NAME: cicd-demo
+   ECS_SERVICE_NAME: cicd-demo-svc
+   ECS_TASK_DEFI: cicd-demo
    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
@@ -40,7 +40,7 @@ jobs:
         shell: bash
 
       - name: Gradle로 프로젝트 Build
-        run: ls -al && ./gradlew build -x test
+        run: ./gradlew build -x test
       
       - name: jar파일 확인
         run: ls -al && ls -al build && ls -al build/libs

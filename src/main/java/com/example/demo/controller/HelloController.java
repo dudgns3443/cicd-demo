@@ -9,7 +9,7 @@ public class HelloController {
     @GetMapping("/api/hello")
     public String testApi() {
 
-        return "자동 배포 테스트입니다. 반가워요 6회차,7회차 수강생여러분";
+        return "자동 배포 테스트입니다. 반가워요 8회차 수강생여러분";
     }
     @GetMapping("/health")
     public boolean healthCheckApi() {

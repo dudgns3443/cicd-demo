@@ -1,4 +1,4 @@
-FROM openjdk:21
+FROM amazoncorretto:21
 
 # set the working directory
 WORKDIR /app

@@ -9,7 +9,7 @@ env:
    ECR_ROOT_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com
    ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
    ECS_CLUSTER_NAME: cicd-demo
-   ECS_SERVICE_NAME: cicd-demo-svc
+   ECS_SERVICE_NAME: cicd-demo-service
    ECS_TASK_DEFI: cicd-demo
    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

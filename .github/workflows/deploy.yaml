@@ -6,8 +6,8 @@ on:
       - main
 env:
    AWS_REGION: ap-northeast-2
-   ECR_ROOT_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com
-   ECR_URL: 084375587480.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
+   ECR_ROOT_URL: 220576703265.dkr.ecr.ap-northeast-2.amazonaws.com
+   ECR_URL: 220576703265.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-demo:latest
    ECS_CLUSTER_NAME: cicd-demo
    ECS_SERVICE_NAME: cicd-demo-service
    ECS_TASK_DEFI: cicd-demo

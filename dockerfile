@@ -8,3 +8,4 @@ COPY ./build/libs/*.jar /app.jar
 
 # always do command
 CMD ["java", "-jar", "/app.jar"]
+
